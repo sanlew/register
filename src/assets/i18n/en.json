@@ -1,0 +1,67 @@
+
+{
+	"next": "Next",
+	"back": "Back",
+    "register": {
+        "personal": {
+            "firstName": "First Name",
+            "middleName": "Middle Name",
+            "lastName": "Last Name",
+            "pesel": "Pesel",
+            "phoneNr": "Phone number",
+            "email": "Email"
+        },
+       
+        "address": {
+            "address0": "Registered address",
+        	"address1": "Address",
+        	"address2": "Address for correspondence",
+        	"address3": "Temporary address",
+        	"typeAddress": "Kind of address",
+            "street": "Street",
+            "streetEnter": "Enter street",
+            "streetReq": "Streen is required",
+            "houseNr": "House number",
+            "houseNrEnter": "Enter house number",
+            "houseNrReq": "House number jis required",
+            "apartmentNr": "Apartment number",
+            "apartmentNrEnter": "Enter apartment number",
+            "postalCode": "Zip code",
+            "postalCodeReq": "Zip code id required",
+            "city": "City",
+            "cityEnter": "Enter city",
+            "cityReq": "City is required",
+            "country": "Country",
+            "countryEnter": "Enter country",
+            "countryReq": "Country is required"
+        },
+        
+        "validation": {
+            "firstNameReq": "First name is required",
+            "firstNameEnter": "Enter first name",
+            "middleNameEnter": "Enter middle name",
+            "onlyLetters": "You can use only letters",
+            "lastNameReq": "Last name is required",
+            "lastNameEnter": "Enter last name",
+            "peselReq": "Pesel is require",
+            "peselEnter": "Enter pesel",
+            "enterDigits": "Enter {{digit}} digits",
+            "minDigits": "Enter minimum {{digit}} digits",
+            "phoneNrReq": "Phone number is required",
+            "phoneNrEnter": "Enter phone number",
+            "allowedChars": "You can use digits,space,-,+",
+            "emailReq": "Email is required",
+            "emailEnter": "Enter email",
+            "enterCorrectEmail": "Enter correct email"
+        },
+        "title": "Sign up new user",
+        "step1": "Personal data",
+        "step2": "Address",
+        "step3": "Password",
+        "password": "Password",
+        "passwordReq": "Password is required",
+        "minChars": "Enter minimum {{chars}} chars",
+       	"register": "Register"
+    }
+    
+}

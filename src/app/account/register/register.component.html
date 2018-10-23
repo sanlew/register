@@ -1,0 +1,222 @@
+
+<div  [hidden]="submitted" >
+<h3>{{ 'register.title' | translate }}</h3>
+<hr/>     
+
+
+<ul class="nav nav-pills nav-fill" >
+   
+    <li class="nav-item">
+    
+        <a class="nav-link active btn blue btn-circle stepAnchor" data-toggle="tab" href="#step1" role="tab">1</a>
+        <p>{{ 'register.step1' | translate }}</p>
+    </li>
+    
+    <li class="nav-item">
+    
+        <a class="nav-link btn blue btn-circle stepAnchor"  [ngClass]="{ 'disabled': !step1.valid }" 
+        data-toggle="tab" href="#step2" role="tab">2</a>
+        <p>{{ 'register.step2' | translate }}</p>
+    </li>
+    <li class="nav-item">
+    
+        <a class="nav-link btn blue  btn-circle stepAnchor" [ngClass]="{ 'disabled': !(step1.valid && step2.valid) }" 
+        data-toggle="tab" href="#step3" role="tab">3</a>
+        <p>{{ 'register.step3' | translate }}</p>
+    </li>
+    
+</ul>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                
+                <form name="form"  class="tab-content" (ngSubmit)="onSubmit()" #f="ngForm" >
+                
+                <div id="step1" class="tab-pane fade in show active" role="tabpanel" >
+                	<div ngForm #step1="ngForm">
+                     <div class="form-group">
+                        <label for="firstName">{{ 'register.personal.firstName' | translate }}</label>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="person.firstName" #firstName="ngModel" 
+                        [ngClass]="{ 'is-invalid': firstName.invalid && (firstName.dirty || firstName.touch), 'is-valid': firstName.valid }" 
+                        required pattern="^([A-Z]|[a-z]|[śćńżźąóęłŚĆŃŻŹĄÓĘŁ])+$" maxlength="20"
+                        placeholder="{{ 'register.validation.firstNameEnter' | translate }}"/>
+                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touch)" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">{{ 'register.validation.firstNameReq' | translate }}</div>
+                            <div *ngIf="firstName.errors.pattern">{{ 'register.validation.onlyLetters' | translate }}</div>
+                            <div *ngIf="firstName.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '20'} }}</div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label  for="middleName">{{ 'register.personal.middleName' | translate }}</label>
+                        <input type="text" class="form-control" name="middleName" [(ngModel)]="person.middleName" #middleName="ngModel" 
+                        pattern="^([A-Z]|[a-z]|[śćńżźąóęłŚĆŃŻŹĄÓĘŁ])+$" maxlength="20"
+                        placeholder="{{ 'register.validation.middleNameEnter' | translate }}"
+                        [ngClass]="{ 'is-invalid': middleName.invalid && (middleName.dirty || middleName.touch),'is-valid': middleName.valid && (middleName.dirty || middleName.touch)}"/>
+                     <div *ngIf="middleName.invalid && (middleName.dirty || middleName.touch)" class="invalid-feedback">
+                             <div *ngIf="middleName.errors.pattern">{{ 'register.validation.onlyLetters' | translate }}</div>
+                             <div *ngIf="middleName.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '20'} }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">{{ 'register.personal.lastName' | translate }}</label>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="person.lastName" #lastName="ngModel" 
+                        [ngClass]="{ 'is-invalid': lastName.invalid && (lastName.dirty || lastName.touch), 'is-valid': lastName.valid }" 
+                        required pattern="^([A-Z]|[a-z]|[śćńżźąóęłŚĆŃŻŹĄÓĘŁ])+$" maxlength="40"
+                        placeholder="{{ 'register.validation.lastNameEnter' | translate }}"/>
+                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touch)" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">{{ 'register.validation.lastNameReq' | translate }}</div>
+                             <div *ngIf="lastName.errors.pattern">{{ 'register.validation.onlyLetters' | translate }}</div>
+                             <div *ngIf="lastName.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '40'} }}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesel">{{ 'register.personal.pesel' | translate }}</label>
+                        <input type="text" class="form-control" name="pesel" [(ngModel)]="person.pesel" #pesel="ngModel" pattern="^\d{11}$"
+                            [ngClass]="{ 'is-invalid': pesel.invalid && (pesel.dirty || pesel.touch), 'is-valid': pesel.valid}" required 
+                            placeholder="{{ 'register.validation.peselEnter' | translate }}" />
+                        <div *ngIf="pesel.invalid && (pesel.dirty || pesel.touch)" class="invalid-feedback">
+                            <div *ngIf="pesel.errors.required">{{ 'register.validation.peselReq' | translate }}</div>
+                             <div *ngIf="pesel.errors.pattern">{{ 'register.validation.enterDigits' | translate:{'digit':'11'} }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNr">{{ 'register.personal.phoneNr' | translate }}</label>
+                        <input type="text" class="form-control" name="phoneNr" [(ngModel)]="person.phoneNr" #phoneNr="ngModel" pattern="^\+?(\d+|-|\s)*$" minlength="9"
+                       [ngClass]="{ 'is-invalid': phoneNr.invalid && (phoneNr.dirty || phoneNr.touch), 'is-valid': phoneNr.valid}" required 
+                       placeholder="{{ 'register.validation.phoneNrEnter' | translate }}" maxlength="15"/>
+                        <div *ngIf="phoneNr.invalid  && (phoneNr.dirty || phoneNr.touch)" class="invalid-feedback">
+                            <div *ngIf="phoneNr.errors.required">{{ 'register.validation.phoneNrReq' | translate }}</div>
+                             <div *ngIf="phoneNr.errors.pattern">{{ 'register.validation.allowedChars' | translate }}</div>
+                             <div *ngIf="phoneNr.errors.minlength">{{ 'register.validation.minDigits' | translate:{'digit':'9'} }}</div>
+                             <div *ngIf="phoneNr.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '15'} }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">{{ 'register.personal.email' | translate }}</label>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="person.email" #email="ngModel" 
+                        [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touch), 'is-valid': email.valid}" required email 
+                        placeholder="{{ 'register.validation.emailEnter' | translate }}" maxlength="30"/>
+                        <div *ngIf="email.invalid && (email.dirty || email.touch)" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">{{ 'register.validation.emailReq' | translate }}</div>
+                            <div *ngIf="email.errors.email">{{ 'register.validation.enterCorrectEmail' | translate }}</div>
+                            <div *ngIf="email.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '30'} }}</div>
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+                    <div class="form-group">
+                    <button class="btn btn-primary nextBtn pull-right" [disabled]="!step1.valid" type="button" (click)="nextStep(2)">{{ 'next' | translate }}</button>
+                    </div>
+                    </div>
+                    
+                    
+                    <div id="step2" class="tab-pane fade" role="tabpanel">
+                    <div ngForm #step2="ngForm">
+					 <div class="form-group">
+  						<label for="selectTypeAddress">{{ 'register.address.typeAddress' | translate }}</label>
+  						<select id="selectTypeAddress" name="typeAddress" class="form-control" [(ngModel)]="address.typeAddressCode">
+   							<option value="0" selected>{{ 'register.address.address0' | translate }}</option>
+    						<option value="1">{{ 'register.address.address1' | translate }}</option>
+    						<option value="2" >{{ 'register.address.address2' | translate }}</option>
+    						<option value="3">{{ 'register.address.address3' | translate }}</option>
+  						</select>
+					</div>
+                    
+                    <div class="form-group">
+                        <label class="control-label required" for="street">{{ 'register.address.street' | translate }}</label>
+                        <input type="text" class="form-control" name="street" [(ngModel)]="address.street" #street="ngModel" 
+                        [ngClass]="{ 'is-invalid': street.invalid && (street.dirty || street.touch), 'is-valid': street.valid }" 
+                        required maxlength="30" placeholder="{{ 'register.address.streetEnter' | translate }}"/>
+                        <div *ngIf="street.invalid && (street.dirty || street.touch)" class="invalid-feedback">
+                            <div *ngIf="street.errors.required">{{ 'register.validation.streetReq' | translate }}</div>
+                            <div *ngIf="street.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '30'} }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label required" for="houseNr">{{ 'register.address.houseNr' | translate }}</label>
+                        <input type="text" class="form-control" name="houseNr" [(ngModel)]="address.houseNr" #houseNr="ngModel" 
+                        [ngClass]="{ 'is-invalid': houseNr.invalid && (houseNr.dirty || houseNr.touch), 'is-valid': houseNr.valid }" 
+                        required maxlength="5" placeholder="{{ 'register.address.houseNrEnter' | translate }}"/>
+                        <div *ngIf="houseNr.invalid && (houseNr.dirty || houseNr.touch)" class="invalid-feedback">
+                            <div *ngIf="houseNr.errors.required">{{ 'register.address.houseNrReq' | translate }}</div>
+                             <div *ngIf="houseNr.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '5'} }}</div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label  class="control-label" for="apartmentNr">{{ 'register.address.apartmentNr' | translate }}</label>
+                        <input type="text" class="form-control" name="apartmentNr" [(ngModel)]="address.apartmentNr" #apartmentNr="ngModel" pattern="^([a-z]|[A-Z]|\d)*$"
+                       [ngClass]="{ 'is-invalid': apartmentNr.invalid && (apartmentNr.dirty || apartmentNr.touch), 'is-valid': apartmentNr.valid && (apartmentNr.dirty || apartmentNr.touch)}" 
+                       placeholder="{{ 'register.address.apartmentNrEnter' | translate }}" maxlength="5"/>
+                         <div *ngIf="apartmentNr.invalid && (apartmentNr.dirty || apartmentNr.touch)" class="invalid-feedback">
+                             <div *ngIf="apartmentNr.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '5'} }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label required" for="postalCode">{{ 'register.address.postalCode' | translate }}</label>
+                        <input type="text" class="form-control" name="postalCode" [(ngModel)]="address.postalCode" #postalCode="ngModel" 
+                        [ngClass]="{ 'is-invalid': postalCode.invalid && (postalCode.dirty || postalCode.touch), 'is-valid': postalCode.valid }" 
+                        required placeholder='XX-XXX' pattern="^\d{2}-\d{3}$"/>
+                        <div *ngIf=" postalCode.invalid && (postalCode.dirty || postalCode.touch)" class="invalid-feedback">
+                            <div *ngIf="postalCode.errors.required">{{ 'register.address.postalCodeReq' | translate }}</div>
+                             <div *ngIf="postalCode.errors.pattern">{{ 'register.address.postalCodePatern' | translate }}</div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label  class="control-label required" for="city">{{ 'register.address.city' | translate }}</label>
+                        <input type="text" class="form-control" name="city" [(ngModel)]="address.city" #city="ngModel" 
+                        [ngClass]="{ 'is-invalid': city.invalid && (city.dirty || city.touch), 'is-valid': city.valid}" 
+                        required placeholder="{{ 'register.address.cityEnter' | translate }}" maxlength="30"/>
+                        <div *ngIf="city.invalid && (city.dirty || city.touch)" class="invalid-feedback">
+                            <div *ngIf="city.errors.required">{{ 'register.address.cityReq' | translate }}</div>
+                             <div *ngIf="city.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max' : '30'} }}</div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="country">{{ 'register.address.country' | translate }}</label>
+                        <input type="text" class="form-control" name="country" [(ngModel)]="address.country" #country="ngModel" 
+                        [ngClass]="{ 'is-invalid':country.invalid && (country.dirty || country.touch), 'is-valid':country.valid}" 
+                        required placeholder="{{ 'register.address.countryEnter' | translate }}" maxlength="30"/>
+                        <div *ngIf="country.invalid && (country.dirty || country.touch)" class="invalid-feedback">
+                            <div *ngIf="country.errors.required">{{ 'register.address.countryReq' | translate }}</div>
+                             <div *ngIf="country.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max':'30'} }}</div>
+                        </div>
+                    </div>
+
+                    </div>
+                     <div class="form-group">
+                     <button class="btn btn-primary nextBtn pull-left" (click)="backStep(1)" type="button">{{ 'back' | translate }}</button>
+                    <button class="btn btn-primary nextBtn pull-right" [disabled]="!step2.valid" type="button" (click)="nextStep(3)" >{{ 'next' | translate }}</button>
+                    </div>
+                    </div>
+                    
+                    
+                    <div id="step3" class="tab-pane fade"  role="tabpanel">
+                    <div ngForm #step3="ngForm" name="step3">
+               		<div class="form-group">
+                        <label class="control-label" for="newPass">{{ 'register.password' | translate }}</label>
+                        <input type="password" class="form-control" name="newPass" [(ngModel)]="password" #newPass="ngModel" 
+                        [ngClass]="{ 'is-invalid': newPass.invalid && (newPass.dirty || newPass.touch), 'is-valid': newPass.valid }" 
+                        required minlength="6" maxlength="50"/>
+                        <div *ngIf="newPass.invalid && (newPass.dirty || newPass.touch)" class="invalid-feedback">
+                            <div *ngIf="newPass.errors.required">{{ 'register.validation.passwordReq' | translate }}</div>
+                            <div *ngIf="newPass.errors.minlength">{{ 'register.minChars' | translate:{'chars':'6'} }}</div>
+                            <div *ngIf="newPass.errors.maxlength">{{ 'register.validation.maxlength' | translate:{'max':'50'} }}</div>
+                        </div>
+                    </div>
+                   
+                    </div>
+                     <div class="form-group">
+                     <button class="btn btn-primary nextBtn pull-left" (click)="backStep(2)" type="button">{{ 'back' | translate }}</button>
+                    <button class="btn btn-primary nextBtn pull-right" [disabled]="!step3.valid" type="submit">{{ 'register.register' | translate }}</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+     
