@@ -1,0 +1,67 @@
+{
+	"next": "Dalej",
+	"back": "Wstecz",
+    "register": {
+        "personal": {
+            "firstName": "Imię",
+            "middleName": "Drugie imię",
+            "lastName": "Nazwisko",
+            "pesel": "Pesel",
+            "phoneNr": "Numer telefonu",
+            "email": "Adres email"
+        },
+       
+        "address": {
+            "address0": "Adres zameldowania",
+        	"address1": "Adres zamieszkania",
+        	"address2": "Adres do korespondencji",
+        	"address3": "Adres tymczasowy",
+        	"typeAddress": "Rodzaj adresu",
+            "street": "Ulica",
+            "streetEnter": "Wprowadź nazwę ulicy",
+            "streetReq": "Nazwa ulicy jest wymagana",
+            "houseNr": "Numer domu",
+            "houseNrEnter": "Wprowadź numer domu",
+            "houseNrReq": "Numer domu jest wymagany",
+            "apartmentNr": "Numer mieszkania",
+            "apartmentNrEnter": "Wprowadź numer mieszkania",
+            "postalCode": "Kod pocztowy",
+            "postalCodeReq": "Kod pocztowy jest wymagany",
+            "city": "Miejscowość",
+            "cityEnter": "Wprowadź miejscowość",
+            "cityReq": "Miejscowość jest wymagana",
+            "country": "Kraj",
+            "countryEnter": "Wprowadź kraj",
+            "countryReq": "Kraj jest wymagany"
+        },
+        
+        "validation": {
+            "firstNameReq": "Imię jest wymagane",
+            "firstNameEnter": "Wprowadź imię",
+            "secondNameEnter": "Wprowadź drugie imię",
+            "onlyLetters": "Akceptowane są tylko litery",
+            "lastNameReq": "Nazwisko jest wymagane",
+            "lastNameEnter": "Wprowadź nazwisko",
+            "peselReq": "Pesel jest wymagany",
+            "peselEnter": "Wprowadź pesel",
+            "enterDigits": "Wpisz {{digit}} cyfr",
+            "minDigits": "Wprowadź minimum {{digit}} cyfr",
+            "phoneNrReq": "Numer telefonu jest wymagany",
+            "phoneNrEnter": "Wprowadź numer telefonu",
+            "allowedChars": "Dopuszczalne są cyfry,spacje,-,+",
+            "emailReq": "Adres email jest wymagany",
+            "emailEnter": "Wprowadź adres email",
+            "enterCorrectEmail": "Wprowadź poprawny adres email"
+        },
+        "title": "Rejestracja nowego użytkownika",
+        "step1": "Dane osobowe",
+        "step2": "Adres",
+        "step3": "Hasło",
+        "password": "Hasło",
+        "passwordReq": "Hasło jest wymagane",
+        "minChars": "Wprowadź minimum {{chars}} znaków",
+        "differentPass": "Wprowadzone hasła są różne",
+       	"register": "Rejestruj"
+    }
+    
+}
